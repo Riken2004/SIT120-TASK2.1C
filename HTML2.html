@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Doctor Appointment Availability</title>
+  <!-- Include Vue 3 -->
+  <script src="https://cdn.jsdelivr.net/npm/vue@3.2.6/dist/vue.global.prod.js"></script>
+</head>
+<body>
+  <div id="app">
+    <h2>Doctor Appointment Availability</h2>
+    <p v-show="isAvailable">Appointments are available today!</p>
+    <p v-show="!isAvailable">No appointments available today. Please check back later.</p>
+  </div>
+
+  <script>
+    // Create a Vue 3 app instance
+    const app = Vue.createApp({
+      data() {
+        return {
+          isAvailable: false, // You can change this value to true or false based on availability
+        };
+      },
+    });
+
+    // Mount the app to the element with the ID "app"
+    app.mount('#app');
+  </script>
+</body>
+</html>

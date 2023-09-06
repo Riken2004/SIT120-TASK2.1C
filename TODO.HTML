@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+    <link rel="stylesheet" href="./STYLES.CSS">
+    <script src="./SCRIPT.JS"></script>
+    <title>Document</title>
+</head>
+<body>
+    <div id="app"> <!-- Create a Vue app container with an ID -->
+        <div class="todo-app" v-cloak> <!-- Use v-cloak to avoid initial rendering of Vue variables -->
+            <h1>Todo App</h1>
+            <input v-model="newTask" @keyup.enter="addTask" placeholder="Enter a new task">
+            <ul>
+                <li v-for="(task, index) in tasks" :key="index">
+                    <input type="checkbox" v-model="task.completed">
+                    <span :class="{ completed: task.completed }">{{ task.text }}</span>
+                    <button @click="removeTask(index)">Remove</button>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Initialize the Vue app -->
+    <script>
+        new Vue({
+            el: '#app',
+            data: {
+                newTask: '', // Initialize newTask to an empty string
+                tasks: []    // Initialize tasks as an empty array
+            },
+            methods: {
+                addTask() {
+                    if (this.newTask.trim() !== '') {
+                        // Check if newTask is not empty
+                        this.tasks.push({
+                            text: this.newTask,  // Add newTask to the tasks array
+                            completed: false     // Initialize completed as false
+                        });
+                        this.newTask = '';  // Clear the newTask input
+                    }
+                },
+                removeTask(index) {
+                    this.tasks.splice(index, 1); // Remove the task at the specified index
+                }
+            }
+        });
+    </script>
+</body>
+</html>

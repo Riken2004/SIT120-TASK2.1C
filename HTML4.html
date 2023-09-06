@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Doctor Appointments</title>
+  <!-- Include Vue 3 -->
+  <script src="https://cdn.jsdelivr.net/npm/vue@3.2.6/dist/vue.global.prod.js"></script>
+</head>
+<body>
+  <div id="app">
+    <h2>Doctor Appointments</h2>
+    <ul>
+      <li v-for="appointment in appointments" :key="appointment.id">
+        {{ appointment.date }} - {{ appointment.time }}
+        <span v-if="appointment.available">(Available)</span>
+      </li>
+    </ul>
+  </div>
+
+  <script>
+    // Create a Vue 3 app instance
+    const app = Vue.createApp({
+      data() {
+        return {
+          appointments: [
+            { id: 1, date: '2023-09-10', time: '10:00 AM', available: true },
+            { id: 2, date: '2023-09-12', time: '3:30 PM', available: false },
+            { id: 3, date: '2023-09-15', time: '2:15 PM', available: true },
+            { id: 4, date: '2023-09-20', time: '11:45 AM', available: false },
+            { id: 5, date: '2023-09-22', time: '4:00 PM', available: true },
+            // Add more appointments as needed
+          ],
+        };
+      },
+    });
+
+    // Mount the app to the element with the ID "app"
+    app.mount('#app');
+  </script>
+</body>
+</html>

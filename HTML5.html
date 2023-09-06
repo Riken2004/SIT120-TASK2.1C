@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Doctor Availability with v-model</title>
+  <!-- Include Vue 3 -->
+  <script src="https://cdn.jsdelivr.net/npm/vue@3.2.6/dist/vue.global.prod.js"></script>
+</head>
+<body>
+  <div id="app">
+    <h2>Doctor Availability with v-model</h2>
+    
+    <!-- Dropdown for availability status -->
+    <select v-model="availability">
+      <option value="available">Available</option>
+      <option value="not_available">Not Available</option>
+    </select>
+    
+    <!-- Display the selected availability status -->
+    <p>Selected Availability: {{ availability }}</p>
+  </div>
+
+  <script>
+    // Create a Vue 3 app instance
+    const app = Vue.createApp({
+      data() {
+        return {
+          availability: 'available', // This is bound to the dropdown using v-model
+        };
+      },
+    });
+
+    // Mount the app to the element with the ID "app"
+    app.mount('#app');
+  </script>
+</body>
+</html>
